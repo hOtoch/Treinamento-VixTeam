@@ -4,11 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HugoApplication {
+public class Main {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(HugoApplication.class, args);
+		SpringApplication.run(Main.class, args);
 	}
 
 }
