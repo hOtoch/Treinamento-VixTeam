@@ -9,6 +9,7 @@
 
     <link rel = "stylesheet" type = "text/css" href = "styleForm.css">
 
+    <script src = "jquery.js"></script>
     <script type="text/javascript" src = "scriptForm.js"></script>
 </head>
 <body>
@@ -20,7 +21,7 @@
 </div>
 
 
-<form action = "/buscarUsuario" class="form">
+<form class="form">
     <fieldset class = "form-grupo">
         <div class = "form-campo">
             <label for = "fNameId"><strong>Nome</strong></label>
@@ -105,7 +106,7 @@
 
 
     <input class ="botao" type = "button" value = "Buscar"
-    onclick="buscarCliente()">
+    onclick="adicionarCliente()">
 
     <span id="resposta_span_id"></span><br><br>
 
@@ -116,6 +117,10 @@
 <footer>
     <p>Frontend - Primeira busca - Treinamento VixTeam 2022</p>
 </footer>
+
+<script>
+    //$('.form').fadeOut(2000);
+</script>
 
 
 <style>

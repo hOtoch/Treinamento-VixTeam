@@ -23,4 +23,25 @@ public class ClienteServiceImpl implements ClienteService {
     public List<Cliente> getClienteByNome(String nome){
         return clienteRepositorio.findByNome(nome);
     }
+
+    @Override
+    public void adicionaCliente(Cliente cliente){
+        clienteRepositorio.save(cliente);
+    }
+    @Override
+    public void removeCliente(Cliente cliente){
+        clienteRepositorio.delete(cliente);
+    }
+
+    @Override
+    public Cliente getClienteByCpf(String cpf){
+      return clienteRepositorio.findByCpf(cpf);
+    }
+
+    @Override
+    public Cliente getClienteByEmail(String email){
+        return clienteRepositorio.findByEmail(email);
+    }
+
+
 }

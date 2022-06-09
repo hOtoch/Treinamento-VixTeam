@@ -6,5 +6,9 @@ import java.util.List;
 
 public interface ClienteService{
         List<Cliente> getAllCliente();
-        List <Cliente> getClienteByNome(String nome);
+        List<Cliente> getClienteByNome(String nome);
+        Cliente getClienteByCpf(String cpf);
+        Cliente getClienteByEmail(String email);
+        void adicionaCliente(Cliente cliente);
+        void removeCliente(Cliente cliente);
 }

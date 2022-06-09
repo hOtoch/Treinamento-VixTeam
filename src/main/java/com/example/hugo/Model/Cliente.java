@@ -1,16 +1,15 @@
 package com.example.hugo.Model;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Calendar;
 
 @Entity
 @Table(name="cliente")
 public class Cliente {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
     @Column(name="CLIENTE_ID",nullable = false,unique = true)
-    private Long id;
+    private long id;
 
     @Column(name="CLIENTE_NOME",nullable = false)
     private String nome;
@@ -35,7 +34,7 @@ public class Cliente {
 
     public Cliente(){}
 
-    public Cliente(String nome,String sobrenome,String email,String cpf,String dataN,String estado){
+    public Cliente(String nome,String sobrenome,String email,String cpf,String dataN,String estado,String sexo){
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.email = email;
