@@ -1,0 +1,27 @@
+.clientesTb{
+    width: 100%;
+    user-select: none;
+    text-align: left;
+}
+
+.clientesTb th{
+    color: darkolivegreen;
+    height: 50px;
+    background-color: var(--primary-color);
+    padding-left: 20px;
+    font-size: 1.2rem;
+}
+.clientesTb td{
+    height: 50px;
+    padding-left: 20px;
+}
+
+.clientesTb th:last-child,.clientesTb td:last-child{
+    padding: 0;
+    min-width: 140px;
+    text-align: center;
+}
+
+.clientesTb tr:hover{
+    background-color: var(--shadow-color);
+}

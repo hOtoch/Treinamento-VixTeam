@@ -1,129 +1,184 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cadastro de Usuário</title>
-
-    <link rel = "stylesheet" type = "text/css" href = "styleForm.css">
-
-    <script src = "jquery.js"></script>
-    <script type="text/javascript" src = "scriptForm.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,200;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/clientesTb.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <script src="js/scriptForm.js" defer></script>
+    <script src = "js/scriptModal.js" defer></script>
+    <script src = "js/scriptTable.js" defer></script>
+    <title>Cadastro de Clientes</title>
 </head>
 <body>
+<header>
+    <h1 class="header-title">Cadastro de Clientes</h1>
+</header>
+<main>
+    <div class = "blueButtons">
+        <button type="button" class="button blue" id="cadastrarCliente">Cadastrar Cliente</button>
+        <button type="button" class = "button blue" id="buscarCliente">Buscar Cliente</button>
+    </div>
 
-<div>
-    <h1 id = "titulo">Cadastro de Usuário</h1>
-    <p id = "subtitulo">Informe seus dados abaixo</p>
-    <br>
-</div>
+    <div class="actions">
+        <button type="button" class = "button green" id = "alterarCliente">Alterar</button>
+        <button type="button" class = "button red" id="removerCliente">Excluir</button>
+    </div>
+
+    <table class="clientesTb" id="clientesTb">
+        <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>CPF</th>
+            <th>Estado</th>
+        </tr>
+        </thead>
+        <tbody id ="tbody">
 
 
-<form class="form">
-    <fieldset class = "form-grupo">
-        <div class = "form-campo">
-            <label for = "fNameId"><strong>Nome</strong></label>
-            <input type = "text" id = "fNameId" name = "fname" placeholder="Informe seu nome" required>
+        </tbody>
+    </table>
+
+
+    <div class="modal" id="modalCadastro">
+        <div class="modal-content">
+
+            <header class="modal-header">
+                <h2>Novo Cliente</h2>
+
+            </header>
+
+            <form class="modal-form">
+                <input type="text" class="modal-field" id = "nome" name="nome" placeholder="Nome do Cliente">
+                <input type="email" class="modal-field" id = "email" name = "email" placeholder="E-mail do Cliente">
+                <input type="text" class="modal-field" id = "cpf" name = "cpf"placeholder="CPF do Cliente">
+                <select name="estado" class="modal-field" name = "estado" id= "estado">
+                    <option selected disabled value = "">Selecione seu estado</option>
+                    <option value = "AC">Acre</option>
+                    <option value = "AL">Alagoas</option>
+                    <option value = "AP">Amapá</option>
+                    <option value = "AM">Amazonas</option>
+                    <option value = "BA">Bahia</option>
+                    <option value = "CE">Ceará</option>
+                    <option value = "DF">Distrito Federal</option>
+                    <option value = "ES">Espírito Santo</option>
+                    <option value = "GO">Goiás</option>
+                    <option value = "MA">Maranhão</option>
+                    <option value = "MT">Mato Grosso</option>
+                    <option value = "MS">Mato Grosso do Sul</option>
+                    <option value = "MG">Minas Gerais</option>
+                    <option value = "PA">Pará</option>
+                    <option value = "PB">Paraíba</option>
+                    <option value = "RJ">Rio de Janeiro</option>
+                    <option value = "PR">Paraná</option>
+                    <option value = "PE">Pernambuco</option>
+                    <option value = "PI">Piauí</option>
+                    <option value = "RJ">Rio de Janeiro</option>
+                    <option value = "RN">Rio Grande do Norte</option>
+                    <option value = "RS">Rio Grande do Sul</option>
+                    <option value = "RO">Rondônia</option>
+                    <option value = "RR">Roraima</option>
+                    <option value = "SC">Santa Catarina</option>
+                    <option value = "SP">São Paulo</option>
+                    <option value = "SE">Sergipe</option>
+                    <option value = "TO">Tocantins</option>
+                </select>
+            </form>
+
+            <footer class="modal-footer">
+                <button class="button green" onclick="adicionarCliente()">Salvar</button>
+                <button class="button red" id="modalCadastroClose">Cancelar</button>
+            </footer>
+
         </div>
-        <div class = "form-campo">
-            <label for = "sNameId"><strong>Sobrenome </strong></label>
-            <input type = "text" id = "sNameId" name = "sname" placeholder="Informe seu sobrenome" required>
+    </div>
+
+    <div class = "modal" id = "modalBusca">
+        <div class="modal-content">
+
+            <header class="modal-header">
+                <h2>Buscar Cliente</h2>
+
+            </header>
+
+            <form class="modal-form">
+                <input type="text" class="modal-field" id = "cpfBuscar" name = "cpf" placeholder="CPF do Cliente">
+
+            </form>
+            <br>
+            <div class="modal-instruction" id="modal-instruction1">
+                Insira o CPF do cliente que deseja buscar
+            </div>
+
+
+            <footer class="modal-footer">
+                <button class="button green" onclick="buscarCliente()">Salvar</button>
+                <button class="button red" id="modalBuscaClose">Cancelar</button>
+            </footer>
         </div>
-    </fieldset>
-
-    <div class = "form-campo">
-        <label for = "email"><strong>Email</strong></label>
-        <input type="email" name="email" id="email" placeholder="Informe seu email">
     </div>
 
-    <div class = "form-campo">
-        <label for="dataNasc"><strong>Data de Nascimento</strong></label>
-        <input type = "date" name = "data" id = "dataNasc">
-    </div>
+    <div class = "modal" id = "modalRemove">
+        <div class="modal-content">
 
-    <div class = "form-campo">
-        <label><strong>Sexo</strong></label>
-        <label>
-            <input type="radio" class = "sexo" name="sexo" value="masc" checked>Masculino<br>
-        </label>
-        <label>
-            <input type="radio" class = "sexo" name="sexo" value="fem">Feminino<br>
-        </label>
+            <header class="modal-header">
+                <h2>Remover Cliente</h2>
 
-        <label>
-            <input type = "radio" class="sexo" name = "sexo" value = "other">Outro<br>
-        </label>
+            </header>
 
+            <form class="modal-form">
+                <input type="text" class="modal-field" id = "cpfRemover" name = "cpf" placeholder="CPF do Cliente">
+
+            </form>
+            <br>
+            <div class="modal-instruction" id="modal-instruction2">
+                Insira o CPF do cliente que deseja remover
+            </div>
 
 
-    </div>
-
-    <div class = "form-campo">
-        <label for = "cpf" > <strong>CPF</strong></label>
-        <input type="text" name = "cpf" id= "cpf" placeholder="Informe seu CPF" name="cpf" \
-               pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" \
-               title="Digite um CPF no formato: xxx.xxx.xxx-xx">
-    </div>
-
-    <fieldset class = "form-grupo">
-        <div class = "form-campo">
-            <label for="estado"><strong>Estado </strong></label>
-            <select name="estado" name = "estado" id= "estado">
-                <option selected disabled value = "">Selecione seu estado</option>
-                <option value = "ac">Acre</option>
-                <option value = "al">Alagoas</option>
-                <option value = "ap">Amapá</option>
-                <option value = "am">Amazonas</option>
-                <option value = "ba">Bahia</option>
-                <option value = "ce">Ceará</option>
-                <option value = "df">Distrito Federal</option>
-                <option value = "es">Espírito Santo</option>
-                <option value = "go">Goiás</option>
-                <option value = "ma">Maranhão</option>
-                <option value = "mt">Mato Grosso</option>
-                <option value = "ms">Mato Grosso do Sul</option>
-                <option value = "mg">Minas Gerais</option>
-                <option value = "pa">Pará</option>
-                <option value = "pb">Paraíba</option>
-                <option value = "rj">Rio de Janeiro</option>
-                <option value = "pr">Paraná</option>
-                <option value = "pe">Pernambuco</option>
-                <option value = "pi">Piauí</option>
-                <option value = "rj">Rio de Janeiro</option>
-                <option value = "rn">Rio Grande do Norte</option>
-                <option value = "rs">Rio Grande do Sul</option>
-                <option value = "ro">Rondônia</option>
-                <option value = "rr">Roraima</option>
-                <option value = "sc">Santa Catarina</option>
-                <option value = "sp">São Paulo</option>
-                <option value = "se">Sergipe</option>
-                <option value = "to">Tocantins</option>
-            </select>
+            <footer class="modal-footer">
+                <button class="button green" onclick="removerCliente()">Remover</button>
+                <button class="button red" id="modalRemoveClose">Cancelar</button>
+            </footer>
         </div>
-    </fieldset>
+    </div>
+
+    <div class ="modal" id="modalAltera">
+        <div class="modal-content">
+
+            <header class="modal-header">
+                <h2>Alterar Cliente</h2>
+
+            </header>
+
+            <form class="modal-form">
+                <input type="text" class="modal-field" id = "cpfAlterar" name = "cpf" placeholder="CPF do Cliente">
+                <input type="text" class="modal-field" id = "emailAlterar" name = "email" placeholder="Novo email">
+
+            </form>
+            <br>
+            <div class="modal-instruction" id="modal-instruction3">
+                Insira o CPF do cliente que deseja alterar e seu novo Email
+            </div>
 
 
-    <input class ="botao" type = "button" value = "Buscar"
-    onclick="adicionarCliente()">
-
-    <span id="resposta_span_id"></span><br><br>
-
-</form>
-
-</body>
+            <footer class="modal-footer">
+                <button class="button green" onclick="alterarCliente()">Alterar</button>
+                <button class="button red" id="modalAlteraClose">Cancelar</button>
+            </footer>
+        </div>
+    </div>
+</main>
 
 <footer>
-    <p>Frontend - Primeira busca - Treinamento VixTeam 2022</p>
+    Treinamento VixTeam - 2022
 </footer>
-
-<script>
-    //$('.form').fadeOut(2000);
-</script>
-
-
-<style>
-
-</style>
+</body>
 </html>

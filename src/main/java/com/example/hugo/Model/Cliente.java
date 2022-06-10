@@ -14,33 +14,21 @@ public class Cliente {
     @Column(name="CLIENTE_NOME",nullable = false)
     private String nome;
 
-    @Column(name="CLIENTE_SOBRENOME",nullable = false)
-    private String sobrenome;
-
     @Column(name="CLIENTE_EMAIL",nullable = false,unique = true)
     private String email;
 
     @Column(name="CLIENTE_CPF",nullable = false,unique = true)
     private String cpf;
 
-    @Column(name="CLIENTE_DATAN",nullable = false)
-    private String dataN;
-
-    @Column(name="CLIENTE_SEXO",nullable = false)
-    private String sexo;
-
     @Column(name="CLIENTE_ESTADO",nullable = false)
     private String estado;
 
     public Cliente(){}
 
-    public Cliente(String nome,String sobrenome,String email,String cpf,String dataN,String estado,String sexo){
+    public Cliente(String nome,String email,String cpf,String estado){
         this.nome = nome;
-        this.sobrenome = sobrenome;
         this.email = email;
         this.cpf = cpf;
-        this.dataN = dataN;
-        this.sexo = sexo;
         this.estado = estado;
     }
 
@@ -50,10 +38,6 @@ public class Cliente {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public String getDataN() {
-        return dataN;
     }
 
     public String getEmail() {
@@ -68,14 +52,6 @@ public class Cliente {
         return nome;
     }
 
-    public String getSexo() {
-        return sexo;
-    }
-
-    public String getSobrenome() {
-        return sobrenome;
-    }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -88,17 +64,9 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
-    }
-
     @Override
     public String toString() {
-        return this.nome;
+        return "Nome: " + this.nome +"\nEmail: " + this.email + "\nCPF: " + this.cpf + "\nEstado: " + this.estado ;
     }
 
 }

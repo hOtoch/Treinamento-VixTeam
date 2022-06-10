@@ -20,25 +20,37 @@ public class ClienteController {
 
 
     @GetMapping ("/buscarUsuario")
-    public String buscar(@RequestParam String nome,@RequestParam  String sobrenome,@RequestParam String email,@RequestParam String data,
-                         @RequestParam String cpf,@RequestParam  String estado,@RequestParam String sexo) {
+    public String buscar(@RequestParam String cpf) {
 
+            Cliente clienteEncontrado = clienteService.getClienteByCpf(cpf);
 
-            List <Cliente> clienteEncontrados = clienteService.getClienteByNome(nome);
+            if(clienteEncontrado == null){
+                return "Cliente não encontrado";
+            }else {
+                return clienteEncontrado.toString();
+            }
+    }
 
-            JSONObject clienteJson = null;
-            if(clienteEncontrados != null){
-                clienteJson = new JSONObject(clienteEncontrados.get(0));
+    @GetMapping("/alterarUsuario")
+    public String alterar(@RequestParam String email,@RequestParam String cpf) {
 
+        if(buscar(cpf) == "Cliente não encontrado"){
+            return "Cliente não encontrado";
+        }else if(clienteService.getClienteByEmail(email) !=null) {
+            return "Email já cadastrado. Por favor insira um novo ou faça uma busca por esse usuário";
+        }else{
+            if(clienteService.updateEmailByCPF(cpf,email) > 0){
+                return "Email do cliente alterado com sucesso!";
+            }else{
+                return "Nenhum email foi alterado!";
             }
 
-            return clienteEncontrados != null ? clienteJson.toString() : "null";
+        }
 
     }
 
     @PostMapping("/adicionarUsuario")
-    public String adicionar(@RequestParam String nome,@RequestParam String sobrenome,@RequestParam String email,@RequestParam String data,
-                            @RequestParam String cpf,@RequestParam String estado,@RequestParam String sexo) {
+    public String adicionar(@RequestParam String nome,@RequestParam String email,@RequestParam String cpf,@RequestParam String estado) {
 
         if(clienteService.getClienteByCpf(cpf) != null){
             return "CPF já cadastrado. Por favor insira um novo ou faça uma busca por esse usuário";
@@ -46,22 +58,29 @@ public class ClienteController {
             return "Email já cadastrado. Por favor insira um novo ou faça uma busca por esse usuário";
         }else {
 
-            Cliente newCliente = new Cliente(nome, sobrenome, email, cpf, data, estado, sexo);
+            Cliente newCliente = new Cliente(nome, email, cpf, estado);
 
             clienteService.adicionaCliente(newCliente);
 
-            JSONObject clienteJson = new JSONObject(newCliente);
-
+            //JSONObject clienteJson = new JSONObject(newCliente);
             return "Cliente adicionado com sucesso!";
+
         }
+
     }
 
     @GetMapping("/removerUsuario")
-    public String remover(@RequestParam(name="cpf") String cpf){
+    public String remover(@RequestParam String cpf){
         Cliente oldCliente = clienteService.getClienteByCpf(cpf);
 
-        clienteService.removeCliente(oldCliente);
+        if(oldCliente == null){
+            return "Cliente não encontrado no nosso banco de dados.";
+        }else{
+            clienteService.removeCliente(oldCliente);
+            return "Cliente removido com sucesso!";
+        }
 
-        return "Cliente removido com sucesso!";
+
+
     }
 }

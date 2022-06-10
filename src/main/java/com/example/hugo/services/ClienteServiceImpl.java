@@ -43,5 +43,9 @@ public class ClienteServiceImpl implements ClienteService {
         return clienteRepositorio.findByEmail(email);
     }
 
+    @Override
+    public int updateEmailByCPF(String cpf,String email){
+        return (clienteRepositorio.updateEmailByCPF(email,cpf));
+    }
 
 }
