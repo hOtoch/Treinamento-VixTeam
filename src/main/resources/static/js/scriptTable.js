@@ -16,7 +16,6 @@ function adicionaClienteTabela(nome,cpf,estado,email){
     cellEmail.innerHTML = email;
     cellEstado.innerHTML = estado;
 
-    //preencheCampoForm();
 }
 
 function removeClienteTabela(cpf){

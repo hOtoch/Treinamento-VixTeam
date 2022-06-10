@@ -91,8 +91,6 @@ function removerCliente(){
             if(this.responseText=="Cliente removido com sucesso!"){
                 removeClienteTabela(cpf);
             }
-            //showResultsBusca(this.responseText);
-            //closeModalBusca();
         }
 
         xhttp.send();

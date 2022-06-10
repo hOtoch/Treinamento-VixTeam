@@ -28,7 +28,8 @@ body{
     display:flex;
     padding-left: 80%;
     grid-gap: 0px 5px;
-
+    /*position: relative;*/
+    /*bottom: 63px;*/
 }
 
 header{

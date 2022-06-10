@@ -15,16 +15,6 @@ public class ClienteServiceImpl implements ClienteService {
     private ClienteRepositorio clienteRepositorio;
 
     @Override
-    public List<Cliente> getAllCliente(){
-        return clienteRepositorio.findAll();
-    }
-
-    @Override
-    public List<Cliente> getClienteByNome(String nome){
-        return clienteRepositorio.findByNome(nome);
-    }
-
-    @Override
     public void adicionaCliente(Cliente cliente){
         clienteRepositorio.save(cliente);
     }

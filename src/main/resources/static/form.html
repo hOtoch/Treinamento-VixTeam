@@ -20,6 +20,7 @@
     <h1 class="header-title">Cadastro de Clientes</h1>
 </header>
 <main>
+
     <div class = "blueButtons">
         <button type="button" class="button blue" id="cadastrarCliente">Cadastrar Cliente</button>
         <button type="button" class = "button blue" id="buscarCliente">Buscar Cliente</button>
@@ -29,6 +30,8 @@
         <button type="button" class = "button green" id = "alterarCliente">Alterar</button>
         <button type="button" class = "button red" id="removerCliente">Excluir</button>
     </div>
+
+
 
     <table class="clientesTb" id="clientesTb">
         <thead>
@@ -56,9 +59,9 @@
             </header>
 
             <form class="modal-form">
-                <input type="text" class="modal-field" id = "nome" name="nome" placeholder="Nome do Cliente">
-                <input type="email" class="modal-field" id = "email" name = "email" placeholder="E-mail do Cliente">
-                <input type="text" class="modal-field" id = "cpf" name = "cpf"placeholder="CPF do Cliente">
+                <input type="text" class="modal-field" id = "nome" name="nome" placeholder="Nome do Cliente" autocomplete="off">
+                <input type="email" class="modal-field" id = "email" name = "email" placeholder="E-mail do Cliente" autocomplete="off">
+                <input type="text" class="modal-field" id = "cpf" name = "cpf"placeholder="CPF do Cliente" autocomplete="off">
                 <select name="estado" class="modal-field" name = "estado" id= "estado">
                     <option selected disabled value = "">Selecione seu estado</option>
                     <option value = "AC">Acre</option>
