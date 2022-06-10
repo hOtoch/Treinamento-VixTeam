@@ -27,6 +27,10 @@ function verificaLogin(){
     }
 
     xhttp.send(formData);
+}
 
+function adicionaLogin(){
+    var email = document.getElementById("emailReg").value;
+    var pass = document.getElementById("passReg").value
 
 }

@@ -15,7 +15,7 @@ public class LoginController {
 
 
     @PostMapping("/buscarLogin")
-    public String buscarLogin(@RequestParam String email,String password){
+    public String buscarLogin(@RequestParam String email,@RequestParam String password){
         Login emailLogin = loginRepositorio.findLoginByEmail(email);
         Login passLogin = loginRepositorio.findLoginByPassword(password);
 
@@ -27,6 +27,20 @@ public class LoginController {
             }
         }
         return "Email ou senha inválidos.";
+
+    }
+
+    @PostMapping("/adicionarLogin")
+    public String adicionarLogin(@RequestParam String email, @RequestParam String password){
+
+        if(loginRepositorio.findLoginByEmail(email) != null){
+            return "Email já cadastrado, por favor informe outro";
+        }else{
+            Login login = new Login(email,password);
+            loginRepositorio.save(login);
+        }
+
+        return "Login criado com sucesso";
 
     }
 }

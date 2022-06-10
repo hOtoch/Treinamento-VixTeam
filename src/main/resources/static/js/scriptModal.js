@@ -55,3 +55,18 @@ document.getElementById('alterarCliente')
 
 document.getElementById('modalAlteraClose')
     .addEventListener('click', closeModalAltera)
+
+// Abrindo e fechando o modal de RegistroLogin
+
+const openModalRegistro = () => {document.getElementById('modalRegistro')
+    .classList.add('active')
+    console.log("ENTROU");}
+
+const closeModalRegistro = () => document.getElementById('modalRegistro')
+    .classList.remove('active')
+
+document.getElementById('registraLogin')
+    .addEventListener('click', openModalRegistro)
+
+document.getElementById('modalRegistroClose')
+    .addEventListener('click', closeModalRegistro)

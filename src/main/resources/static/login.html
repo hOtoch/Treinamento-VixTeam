@@ -5,8 +5,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/scriptModal.js"defer></script>
+    <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/login.css">
-    <script src="js/scriptLogin.js"></script>
+    <link rel="stylesheet" href="css/button.css">
+    <script src="js/scriptLogin.js" defer></script>
     <title>Login</title>
 </head>
 <body>
@@ -18,15 +21,36 @@
         <input type="email" name="email" id="email" placeholder="Digite seu email" autocomplete="off">
         <label for = "password">Senha</label>
         <input type="password" id="password" name="password" placeholder="Digite a sua senha">
-        <a href="#" id="forgot-pass">Esqueceu a senha?</a>
-        <input type = "button" value="Entrar" id="insert-login" onclick="verificaLogin()">
+        <input type = "button" value="Entrar" class ="button-login" id="insert-login" onclick="verificaLogin()">
 
         <div id="register-container">
             <p>Ainda não possui uma conta?</p>
-            <a href="#">Registrar</a>
+            <input type = "button" value="Registrar" class="button-register" id="registraLogin">
         </div>
 
     </form>
+
+    <div id="modalRegistro" class="modal">
+        <div class="modal-content">
+
+            <header class="modal-header">
+                <h2>Registrar usuário</h2>
+
+            </header>
+
+            <form class="modal-form">
+                <input type="email" class="modal-field" id = "emailReg" name = "emailReg" placeholder="Informe seu email" autocomplete="off">
+                <input type="password" class="modal-field" id = "passReg" name = "passReg"placeholder="Informe sua senha">
+
+            </form>
+
+            <footer class="modal-footer">
+                <button class="button green" onclick="adicionaLogin()">Registrar</button>
+                <button class="button red" id="modalRegistroClose">Cancelar</button>
+            </footer>
+
+        </div>
+    </div>
 </div>
 
 </body>

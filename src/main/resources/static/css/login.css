@@ -65,12 +65,21 @@ input:focus {
     border-bottom: 2px solid darkolivegreen;
 }
 
-#forgot-pass{
-    text-align: right;
-    display: block;
+.button-register{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    margin-left: 25%;
+    height: 40px;
+    width: 50%;
+    border-radius: 20px;
+    margin-top: 30px;
+    background-color: darkolivegreen;
+    cursor:pointer;
 }
 
-#insert-login {
+.button-login {
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
@@ -82,7 +91,7 @@ input:focus {
     cursor:pointer;
 }
 
-#insert-login:hover {
+.button-login:hover {
     background-color: DarkSeaGreen;
     transition: 0.5s;
 }
